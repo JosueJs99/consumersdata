@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Panificadora Pão e Vinho {% endblock%}</h1>
+    {% for cliente in clientesf %}
+        <a href="#">
+            <h2>{{ cliente['id'] }}</h2>
+        </a>
+        <span class="badge badge-primary">{{ cliente['nome'] }}</span>
+    <hr>
+    {% endfor %}
+{% endblock %}

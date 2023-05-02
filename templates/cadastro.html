@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Cadastro de novos clientes {% endblock%}</h1>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputEmail4">Nome</label>
+        <input type="text" class="form-control" id="inputEmail4" placeholder="Nome">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputPassword4">Sobrenome</label>
+        <input type="text" class="form-control" id="inputPassword4" placeholder="Sobrenome">
+      </div>
+    </div>
+    <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputAddress">Endereço</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="Rua Ipiranga, nº 0">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputAddress2">Bairro</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartamento, hotel, casa, etc.">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputAddress2">Complemento</label>
+      <input type="text" class="form-control" id="inputAddress3" placeholder="Apartamento, hotel, casa, etc.">
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+  </form>
+{% endblock %}
