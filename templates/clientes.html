@@ -8,32 +8,16 @@
           <th scope="col">ID</th>
           <th scope="col">Nome</th>
           <th scope="col">Sobrenome</th>
-          <th scope="col">Endereço</th>
-          <th scope="col">Telefone</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>Rua das couves</td>
-          <td>9854-1326</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>Avenida das nações</td>
-          <td>9976-1231</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>Alameda dos anjos</td>
-          <td>9812-1458</td>
-        </tr>
+        {% for cliente in cliente %}
+          <tr class='cliente'>
+            <th scope="row">{{ cliente['id'] }}</th>
+            <td>{{ cliente['nome'] }}</td>
+            <td>{{ cliente['sobrenome'] }}</td>
+          </tr>
+        {% endfor %}
       </tbody>
     </table>
 {% endblock %}

@@ -2,11 +2,11 @@
 
 {% block content %}
     <h1>{% block title %} Panificadora Pão e Vinho {% endblock%}</h1>
-    {% for cliente in clientesf %}
-        <a href="#">
-            <h2>{{ cliente['id'] }}</h2>
-        </a>
-        <span class="badge badge-primary">{{ cliente['nome'] }}</span>
-    <hr>
+    {% for cliente in cliente %}
+         <div class='cliente'>
+            <p>{{ cliente['id'] }}</p>
+            <h2>{{ cliente['nome'] }}</h2>
+            <p>{{ cliente['sobrenome'] }}</p>
+        </div>
     {% endfor %}
 {% endblock %}
