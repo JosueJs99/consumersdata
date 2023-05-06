@@ -1,7 +1,8 @@
 import sqlite3
-from flask import Flask, render_template
+from flask import Flask, render_template, request, url_for, flash, redirect
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your secret key'
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -13,10 +14,7 @@ def get_db_connection():
 
 @app.route('/')
 def index():
-    conn = get_db_connection()
-    cliente = conn.execute('SELECT * FROM cliente').fetchall()
-    conn.close()
-    return render_template('index.html', cliente=cliente)
+    return render_template('index.html')
 
 @app.route('/clientes')
 def clientes():
@@ -25,8 +23,24 @@ def clientes():
     conn.close()
     return render_template('clientes.html', cliente=cliente)
 
-@app.route('/cadastro')
+@app.route('/cadastro/', methods=('GET', 'POST'))
 def cadastro():
+    if request.method == 'post':
+        nome = request.form['nome']
+        sobrenome = request.form['sobrenome']
+
+        if not nome:
+            flash('É necessário inserir o nome!')
+        elif not sobrenome:
+            flash('É necessário inserir o nome!')
+        else:
+            conn = get_db_connection()
+            conn.execute('INSERT INTO cliente (nome, sobrenome) VALUES (?, ?)',
+                             (nome, sobrenome))
+            conn.commit()
+            conn.close()
+            return redirect(url_for('clientes'))
+
     return render_template('cadastro.html')
 
 @app.route('/sobre')

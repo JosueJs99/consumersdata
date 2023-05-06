@@ -9,7 +9,7 @@ CREATE TABLE cliente(
 );
 
 CREATE TABLE endereco(
-	id INT(10) PRIMARY KEY,
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	clienteid INT,
 	rua TEXT(150) NOT NULL,
 	numero TEXT(20),
@@ -19,7 +19,7 @@ CREATE TABLE endereco(
 );
 
 CREATE TABLE telefone(
-	id INT PRIMARY KEY,
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	tipo TEXT(3) NOT NULL,
 	numero TEXT(15) NOT NULL,
 	clienteid INT,
