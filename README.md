@@ -10,5 +10,5 @@ IDE de Desenvolvimento: Pycharm
 
 Para executar o app basta executar no terminal da sua IDE: flask run
 Caso ocorra um erro executar esses comandos antes:
-export FLASK_APP=app
+export FLASK_APP=app,
 export FLASK_ENV=development
