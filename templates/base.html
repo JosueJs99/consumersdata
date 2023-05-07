@@ -7,7 +7,13 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <style>
+        .alert {
+            padding: 20px;
+            margin: 5px;
+            color: #970020;
+            background-color: #ffd5de;
+    </style>
     <title>Panificadora Pão e Vinho</title>
   </head>
   <body>
@@ -26,6 +32,10 @@
             </li>
         </ul>
         <div class="content">
+            {% for message in get_flashed_messages() %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+
             {% block content %} {% endblock %}
         </div>
     <!-- JavaScript (Opcional) -->

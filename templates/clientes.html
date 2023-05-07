@@ -8,6 +8,7 @@
           <th scope="col">ID</th>
           <th scope="col">Nome</th>
           <th scope="col">Sobrenome</th>
+          <th scope="col">Opções</th>
         </tr>
       </thead>
       <tbody>
@@ -16,6 +17,7 @@
             <th scope="row">{{ cliente['id'] }}</th>
             <td>{{ cliente['nome'] }}</td>
             <td>{{ cliente['sobrenome'] }}</td>
+            <td><a href="{{ url_for('editar', id=cliente['id']) }}">Editar</a></td>
           </tr>
         {% endfor %}
       </tbody>

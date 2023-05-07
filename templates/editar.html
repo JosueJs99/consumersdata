@@ -1,21 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Cadastro de novos clientes {% endblock%}</h1>
+    <h1>{% block title %} Editar cliente {% endblock%}</h1>
     <form method="post">
         <label for="nome">Nome</label>
         <br>
         <input type="text" class = "form-control" name="nome"
                placeholder="Inserir nome"
-               value="{{ request.form['nome'] }}"></input>
+               value="{{ request.form['nome'] or cliente['nome'] }}"></input>
         <br>
 
          <label for="sobrenome">Sobrenome</label>
         <br>
         <input type="text" class = "form-control" name="sobrenome"
                placeholder="Inserir sobrenome"
-               value="{{ request.form['sobrenome'] }}"></input>
+               value="{{ request.form['sobrenome'] or cliente['sobrenome'] }}"></input>
         <br>
         <button type="submit">Cadastrar</button>
   </form>
+  <hr>
+    <form action="{{ url_for('excluir', id=cliente['id']) }}" method="POST">
+        <input type="submit" value="Excluir cliente"
+                onclick="return confirm('Você tem certeza de que deseja excluir esse cliente?')">
+    </form>
 {% endblock %}
