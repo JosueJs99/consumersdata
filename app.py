@@ -43,16 +43,28 @@ def get_telefone(telefone_id):
 def index():
     return render_template('index.html')
 
-@app.route('/clientes')
+@app.route('/clientes', methods=('GET', 'POST'))
 def clientes():
     conn = get_db_connection()
-    todos = conn.execute('SELECT t.tipo, t.telnum, i.rua, i.numero, i.bairro, i.complemento, l.id, l.nome, l.sobrenome \
-                            FROM cliente l\
-                            INNER JOIN endereco i\
-                            ON i.clienteid = l.id \
-                            INNER JOIN telefone t\
-                            ON t.clienteid = l.id \
-                            ORDER BY l.nome;').fetchall()
+    if request.method == 'POST':
+        busca = request.form['busca']
+        todos = conn.execute("SELECT t.tipo, t.telnum, i.rua, i.numero, i.bairro, i.complemento, l.id, l.nome, l.sobrenome \
+                                FROM cliente l\
+                                INNER JOIN endereco i\
+                                ON i.clienteid = l.id \
+                                INNER JOIN telefone t\
+                                ON t.clienteid = l.id \
+                                WHERE l.nome = (?)\
+                                ORDER BY l.nome;",(busca,)).fetchall()
+    else:
+        todos = conn.execute('SELECT t.tipo, t.telnum, i.rua, i.numero, i.bairro, i.complemento, l.id, l.nome, l.sobrenome \
+                                        FROM cliente l\
+                                        INNER JOIN endereco i\
+                                        ON i.clienteid = l.id \
+                                        INNER JOIN telefone t\
+                                        ON t.clienteid = l.id \
+                                        ORDER BY l.nome;').fetchall()
+
     conn.close()
     return render_template('clientes.html', todos=todos)
 

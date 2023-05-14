@@ -2,6 +2,16 @@
 
 {% block content %}
     <h1>{% block title %} Lista de Clientes {% endblock%}</h1>
+    <form class= "form-inline" method="post">
+        <label for="busca">Nome</label>
+        <br>
+        <input type="text" class = "form-control" name="busca"
+               placeholder="Busca por nome"
+               value="{{ request.form['busca'] }}"></input>
+        <br>
+	    <button type="submit">Buscar</button>
+    </form>
+
     <table class="table">
       <thead class="thead-dark">
         <tr>
