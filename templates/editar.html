@@ -16,7 +16,50 @@
                placeholder="Inserir sobrenome"
                value="{{ request.form['sobrenome'] or cliente['sobrenome'] }}"></input>
         <br>
-        <button type="submit">Cadastrar</button>
+
+        <label for="rua">Rua</label>
+        <br>
+        <input type="text" class = "form-control" name="rua"
+               placeholder="Ex: rua dos bobos"
+               value="{{ request.form['rua'] or endereco['rua'] }}"></input>
+        <br>
+
+         <label for="numero">Numero</label>
+        <br>
+        <input type="text" class = "form-control" name="numero"
+               placeholder="Ex: 999"
+               value="{{ request.form['numero'] or endereco['numero']  }}"></input>
+        <br>
+
+         <label for="bairro">Bairro</label>
+        <br>
+        <input type="text" class = "form-control" name="bairro"
+               placeholder="Ex: Jardin Europa"
+               value="{{ request.form['bairro'] or endereco ['bairro']  }}"></input>
+        <br>
+
+         <label for="Complemento">Complemento</label>
+        <br>
+        <input type="text" class = "form-control" name="complemento"
+               placeholder="Ex: próximo a padaria"
+               value="{{ request.form['complemento'] or endereco['complemento'] }}"></input>
+        <br>
+
+        <label for="tipo">Tipo</label>
+        <br>
+        <input type="text" class = "form-control" name="tipo"
+               placeholder="RES, COM ou CEL"
+               value="{{ request.form['tipo'] or telefone['tipo']  }}"></input>
+        <br>
+
+        <label for="telnum">N° Telefone</label>
+        <br>
+        <input type="text" class = "form-control" name="telnum"
+               placeholder="xx xxxx-xxxx"
+               value="{{ request.form['telnum'] or telefone['telnum']  }}"></input>
+        <br>
+
+        <button type="submit">Alterar</button>
   </form>
   <hr>
     <form action="{{ url_for('excluir', id=cliente['id']) }}" method="POST">

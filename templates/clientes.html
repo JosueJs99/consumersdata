@@ -7,17 +7,19 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Nome</th>
-          <th scope="col">Sobrenome</th>
+          <th scope="col">Endereco</th>
+          <th scope="col">Telefone</th>
           <th scope="col">Opções</th>
         </tr>
       </thead>
       <tbody>
-        {% for cliente in cliente %}
-          <tr class='cliente'>
-            <th scope="row">{{ cliente['id'] }}</th>
-            <td>{{ cliente['nome'] }}</td>
-            <td>{{ cliente['sobrenome'] }}</td>
-            <td><a href="{{ url_for('editar', id=cliente['id']) }}">Editar</a></td>
+        {% for todo in todos %}
+          <tr class='todos'>
+            <th scope="row">{{ todo['id'] }}</th>
+            <td>{{ todo['nome'] }} {{ todo['sobrenome'] }}</td>
+            <td>{{ todo['rua'] }}, {{ todo['numero'] }}, {{ todo['bairro'] }}, {{ todo['complemento'] }}</td>
+            <td>{{ todo['tipo'] }} {{ todo['telnum'] }}</td>
+            <td><a href="{{ url_for('editar', id=todo['id']) }}">Editar</a></td>
           </tr>
         {% endfor %}
       </tbody>

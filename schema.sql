@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS telefone;
 CREATE TABLE cliente(
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	nome TEXT(30) NOT NULL,
-	sobrenome TEXT(30) NOT NULL
+	sobrenome TEXT(30) NOT NULL,
 );
 
 CREATE TABLE endereco(
@@ -21,7 +21,7 @@ CREATE TABLE endereco(
 CREATE TABLE telefone(
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	tipo TEXT(3) NOT NULL,
-	numero TEXT(15) NOT NULL,
+	telnum TEXT(15) NOT NULL,
 	clienteid INT,
 	CHECK (TIPO IN ('RES','COM','CEL')),
 	FOREIGN KEY(clienteid) REFERENCES cliente(id)

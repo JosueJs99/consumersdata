@@ -44,17 +44,17 @@ cur.execute("INSERT INTO endereco (clienteid, rua, numero, bairro, complemento) 
 
 #Inserindo o telefone de contato do cliente
 
-cur.execute("INSERT INTO telefone (tipo, numero, clienteid) VALUES(?, ?, ?)",
+cur.execute("INSERT INTO telefone (tipo, telnum, clienteid) VALUES(?, ?, ?)",
             ('RES','4367-1585', 1)
             )
 
-cur.execute("INSERT INTO telefone (tipo, numero, clienteid) VALUES(?, ?, ?)",
+cur.execute("INSERT INTO telefone (tipo, telnum, clienteid) VALUES(?, ?, ?)",
             ('CEL','9-9976-0133', 2)
             )
-cur.execute("INSERT INTO telefone (tipo, numero, clienteid) VALUES(?, ?, ?)",
+cur.execute("INSERT INTO telefone (tipo, telnum, clienteid) VALUES(?, ?, ?)",
             ('RES','4580-1018', 3)
             )
-cur.execute("INSERT INTO telefone (tipo, numero, clienteid) VALUES(?, ?, ?)",
+cur.execute("INSERT INTO telefone (tipo, telnum, clienteid) VALUES(?, ?, ?)",
             ('CEL','9-9622-1199', 4)
             )
 

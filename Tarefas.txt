@@ -1,0 +1,16 @@
+Implementações a serem adicionadas
+
+
+Index:
+- Tela de Login
+
+Cadastro:
+- Balisar pela data de inserção
+- Tabelas relacionais na edição e exclusão
+
+Clientes:
+- Campo de pesquisa
+- Limitador de exibição
+
+Base:
+- Melhorar o layout da aplicação

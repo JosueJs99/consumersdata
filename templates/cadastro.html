@@ -16,6 +16,49 @@
                placeholder="Inserir sobrenome"
                value="{{ request.form['sobrenome'] }}"></input>
         <br>
+
+         <label for="rua">Rua</label>
+        <br>
+        <input type="text" class = "form-control" name="rua"
+               placeholder="Ex: rua dos bobos"
+               value="{{ request.form['rua'] }}"></input>
+        <br>
+
+         <label for="numero">Numero</label>
+        <br>
+        <input type="text" class = "form-control" name="numero"
+               placeholder="Ex: 999"
+               value="{{ request.form['numero'] }}"></input>
+        <br>
+
+         <label for="bairro">Bairro</label>
+        <br>
+        <input type="text" class = "form-control" name="bairro"
+               placeholder="Ex: Jardin Europa"
+               value="{{ request.form['bairro'] }}"></input>
+        <br>
+
+         <label for="Complemento">Complemento</label>
+        <br>
+        <input type="text" class = "form-control" name="complemento"
+               placeholder="Ex: próximo a padaria"
+               value="{{ request.form['complemento'] }}"></input>
+        <br>
+
+        <label for="tipo">Tipo</label>
+        <br>
+        <input type="text" class = "form-control" name="tipo"
+               placeholder="RES, COM ou CEL"
+               value="{{ request.form['tipo'] }}"></input>
+        <br>
+
+        <label for="telnum">N° Telefone</label>
+        <br>
+        <input type="text" class = "form-control" name="telnum"
+               placeholder="xx xxxx-xxxx"
+               value="{{ request.form['telnum'] }}"></input>
+        <br>
+
         <button type="submit">Cadastrar</button>
   </form>
 {% endblock %}
