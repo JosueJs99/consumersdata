@@ -1,69 +1,165 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{% block content %}
-    <h1>{% block title %} Editar cliente {% endblock%}</h1>
-    <form method="post">
-        <label for="nome">Nome</label>
-        <br>
-        <input type="text" class = "form-control" name="nome"
-               placeholder="Inserir nome"
-               value="{{ request.form['nome'] or cliente['nome'] }}"></input>
-        <br>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('../../static/img/bread1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .alert {
+            padding: 20px;
+            margin: 5px;
+            color: #970020;
+            background-color: #ffd5de;
+        card {
+            margin: 0 auto;
+        }
+        h1 {
+            border: 2px #eee solid;
+            color: red;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+    <title>Panificadora Pão e Vinho</title>
+  </head>
+  <body>
+            <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong justify-content-center">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0"f>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{url_for('index')}}">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{url_for('clientes')}}">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('cadastro')}}">Cadastro</a>
+                        </li>
+                    </ul>
+                </nav>
+                <br>
+                <div class="content">
+            {% for message in get_flashed_messages() %}
+                <div class="mx-auto" style="width: 775px;">
+                <div class="alert text-center" style="width: 50rem;">{{ message }}</div>
+                </div>
+            {% endfor %}
+            {% block content %}
+                    <h1 class="text-center text-light">{% block title %} Editar {% endblock%}</h1>
+                <br>
+                <div class="mx-auto" style="width: 850px;">
+                <div class="card" style="width: 56rem;">
+                  <div class="card-body">
+                    <p class="font-weight-bold">Dados Pessoais</p>
 
-         <label for="sobrenome">Sobrenome</label>
-        <br>
-        <input type="text" class = "form-control" name="sobrenome"
-               placeholder="Inserir sobrenome"
-               value="{{ request.form['sobrenome'] or cliente['sobrenome'] }}"></input>
-        <br>
+                        <form method="post">
+                            <div class="form-row">
+                                <div class="col-5">
+                                    <label for="nome">Nome</label>
+                                    <br>
+                                    <input type="text" class = "form-control" name="nome"
+                                           placeholder="Inserir nome"
+                                           value="{{ request.form['nome'] or cliente['nome'] }}"></input>
+                                    <br>
+                                </div>
+                                <div class="col-5">
+                                    <label for="sobrenome">Sobrenome</label>
+                                    <br>
+                                    <input type="text" class = "form-control" name="sobrenome"
+                                           placeholder="Inserir sobrenome"
+                                           value="{{ request.form['sobrenome'] or cliente['sobrenome'] }}"></input>
+                                    <br>
+                                </div>
+                            </div>
 
-        <label for="rua">Rua</label>
-        <br>
-        <input type="text" class = "form-control" name="rua"
-               placeholder="Ex: rua dos bobos"
-               value="{{ request.form['rua'] or endereco['rua'] }}"></input>
-        <br>
+                            <p class="font-weight-bold">Endereço</p>
 
-         <label for="numero">Numero</label>
-        <br>
-        <input type="text" class = "form-control" name="numero"
-               placeholder="Ex: 999"
-               value="{{ request.form['numero'] or endereco['numero']  }}"></input>
-        <br>
+                            <div class="form-row">
+                                <div class="col-5">
+                                    <label for="rua">Rua/Avenida/Alameda</label>
+                                    <br>
+                                    <input type="text" class = "form-control" name="rua"
+                                           placeholder="Ex: rua dos bobos"
+                                           value="{{ request.form['rua'] or endereco['rua'] }}"></input>
+                                    <br>
+                                </div>
 
-         <label for="bairro">Bairro</label>
-        <br>
-        <input type="text" class = "form-control" name="bairro"
-               placeholder="Ex: Jardin Europa"
-               value="{{ request.form['bairro'] or endereco ['bairro']  }}"></input>
-        <br>
+                                <div class="col-2">
+                                    <label for="numero">Número</label>
+                                    <br>
+                                    <input type="text" class = "form-control" name="numero"
+                                           placeholder="Ex: 999"
+                                           value="{{ request.form['numero'] or endereco['numero'] }}"></input>
+                                    <br>
+                                </div>
 
-         <label for="Complemento">Complemento</label>
-        <br>
-        <input type="text" class = "form-control" name="complemento"
-               placeholder="Ex: próximo a padaria"
-               value="{{ request.form['complemento'] or endereco['complemento'] }}"></input>
-        <br>
+                                <div class="col-5">
+                                    <label for="bairro">Bairro</label>
+                                    <br>
+                                    <input type="text" class = "form-control" name="bairro"
+                                           placeholder="Ex: Jardin Europa"
+                                           value="{{ request.form['bairro'] or endereco ['bairro'] }}"></input>
+                                    <br>
+                                </div>
+                            </div>
 
-        <label for="tipo">Tipo</label>
-        <br>
-        <input type="text" class = "form-control" name="tipo"
-               placeholder="RES, COM ou CEL"
-               value="{{ request.form['tipo'] or telefone['tipo']  }}"></input>
-        <br>
+                            <div class="form-row">
+                            <div class="col-7">
+                                <label for="Complemento">Complemento</label>
+                                <br>
+                                <input type="text" class = "form-control" name="complemento"
+                                       placeholder="Ex: próximo a padaria"
+                                       value="{{ request.form['complemento'] or endereco['complemento'] }}"></input>
+                                <br>
+                            </div>
+                            </div>
 
-        <label for="telnum">N° Telefone</label>
-        <br>
-        <input type="text" class = "form-control" name="telnum"
-               placeholder="xx xxxx-xxxx"
-               value="{{ request.form['telnum'] or telefone['telnum']  }}"></input>
-        <br>
 
-        <button type="submit">Alterar</button>
-  </form>
-  <hr>
-    <form action="{{ url_for('excluir', id=cliente['id']) }}" method="POST">
-        <input type="submit" value="Excluir cliente"
-                onclick="return confirm('Você tem certeza de que deseja excluir esse cliente?')">
-    </form>
-{% endblock %}
+                            <p class="font-weight-bold">Telefone</p>
+
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <label for="tipo">Tipo</label>
+                                    <br>
+                                    <input type="text" class = "form-control  text-uppercase" name="tipo"
+                                           placeholder="RES, COM ou CEL"
+                                           value="{{ request.form['tipo'] or telefone['tipo'] }}"></input>
+                                    <br>
+                                </div>
+
+                                <div class="col-3">
+                                    <label for="telnum">Número</label>
+                                    <br>
+                                    <input type="text" class = "form-control" name="telnum"
+                                           placeholder="(xx) xxxx-xxxx"
+                                           value="{{ request.form['telnum'] or telefone['telnum'] }}"></input>
+                                    <br>
+                                </div>
+                            </div>
+                                <div class="form-row">
+                                <button type="submit" class="btn btn-info">Alterar</button>
+                        </form>
+                                <form action="{{ url_for('excluir', id=cliente['id']) }}" method="POST">
+                                <input type="submit" class="btn btn-danger" value="Excluir"
+                                        onclick="return confirm('Você tem certeza de que deseja excluir esse cliente?')">
+                                </form>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+            </div>
+  <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>

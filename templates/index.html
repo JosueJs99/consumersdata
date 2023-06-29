@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Panificadora Pão e Vinho {% endblock%}</h1>
-    {% for cliente in cliente %}
-         <div class='cliente'>
-            <p>{{ cliente['id'] }}</p>
-            <h2>{{ cliente['nome'] }}</h2>
-            <p>{{ cliente['sobrenome'] }}</p>
-        </div>
-    {% endfor %}
+<br>
+<br>
+
+    <h1 class="text-center text-light">{% block title %} Panificadora Pão e Vinho {% endblock%}</h1>
+<br>
+<br>
+<br>
+
+<div class="mx-auto" style="width: 470px;">
+    <div class="card" style="width: 30rem;">
+          <div class="card-body">
+            <p class="card-text text-justify">A Panificadora Pão e Vinho é atuante há 30 anos no mercado oferecendo produtos de qualidade e um atendimento personalizado aos seus clientes.</p>
+            <p class="card-text text-justify">A Panificadora está localizada na Avenida Padre Cícero, número 1112,  Salesianos. Juazeiro do norte - CE.</p>
+            <p class="card-text text-justify">Telefone: (88) 3512-1457<p>
+          </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 {% endblock %}

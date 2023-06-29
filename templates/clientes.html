@@ -1,37 +1,51 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Lista de Clientes {% endblock%}</h1>
-    <form class= "form-inline" method="post">
-        <label for="busca">Nome</label>
-        <br>
-        <input type="text" class = "form-control" name="busca"
-               placeholder="Busca por nome"
-               value="{{ request.form['busca'] }}"></input>
-        <br>
-	    <button type="submit">Buscar</button>
-    </form>
+<br>
 
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Endereco</th>
-          <th scope="col">Telefone</th>
-          <th scope="col">Opções</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for todo in todos %}
-          <tr class='todos'>
-            <th scope="row">{{ todo['id'] }}</th>
-            <td>{{ todo['nome'] }} {{ todo['sobrenome'] }}</td>
-            <td>{{ todo['rua'] }}, {{ todo['numero'] }}, {{ todo['bairro'] }}, {{ todo['complemento'] }}</td>
-            <td>{{ todo['tipo'] }} {{ todo['telnum'] }}</td>
-            <td><a href="{{ url_for('editar', id=todo['id']) }}">Editar</a></td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <h1 class="text-center text-light">{% block title %} Lista de Clientes {% endblock%}</h1>
+<br>
+    <div class="mx-auto" style="width: 300px;">
+        <form class= "form-inline my-2 my-lg-0" method="post">
+            <br>
+            <input type="text" class = "form-control text-capitalize" name="busca"
+                   placeholder="Busca por nome"
+                   value="{{ request.form['busca'] }}"></input>
+            <br>
+            <button class="btn btn-success" type="submit">Buscar</button>
+        </form>
+    </div>
+<br>
+<div class="mx-auto" style="width: 1050px;">
+    <div class="card" style="width: 70rem;">
+        <table class="table table-hover table-bordered table-light">
+          <thead class="bg-warning text-light">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Endereco</th>
+              <th scope="col">Telefone</th>
+              <th scope="col">Opções</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for todo in todos %}
+              <tr class='todos'>
+                <th scope="row">{{ todo['id'] }}</th>
+                <td>{{ todo['nome'] }} {{ todo['sobrenome'] }}</td>
+                <td>{{ todo['rua'] }}, {{ todo['numero'] }}, {{ todo['bairro'] }}, {{ todo['complemento'] }}</td>
+                <td>{{ todo['tipo'] }} {{ todo['telnum'] }}</td>
+                <td><a href="{{ url_for('editar', id=todo['id']) }}">Editar</a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 {% endblock %}

@@ -47,7 +47,7 @@ def index():
 def clientes():
     conn = get_db_connection()
     if request.method == 'POST':
-        busca = request.form['busca']
+        busca = request.form['busca'].capitalize()
         todos = conn.execute("SELECT t.tipo, t.telnum, i.rua, i.numero, i.bairro, i.complemento, l.id, l.nome, l.sobrenome \
                                 FROM cliente l\
                                 INNER JOIN endereco i\
@@ -63,7 +63,7 @@ def clientes():
                                         ON i.clienteid = l.id \
                                         INNER JOIN telefone t\
                                         ON t.clienteid = l.id \
-                                        ORDER BY l.nome;').fetchall()
+                                        ORDER BY l.id;').fetchall()
 
     conn.close()
     return render_template('clientes.html', todos=todos)
@@ -77,7 +77,7 @@ def cadastro():
         numero = request.form['numero']
         bairro = request.form['bairro']
         complemento = request.form['complemento']
-        tipo = request.form['tipo']
+        tipo = request.form['tipo'].upper()
         telnum = request.form['telnum']
 
         if not nome:
@@ -92,6 +92,8 @@ def cadastro():
             flash('É necessário inserir o bairro!')
         elif not tipo:
             flash('É necessário selecionar o tipo de telefone!')
+        elif tipo != 'CEL' and tipo != 'RES' and tipo != 'COM':
+            flash('Tipo incorreto! Selecionar entre CEL para celular ou RES para residencial ou COM para Comercial.')
         elif not telnum:
             flash('É necessário inserir o telefone!')
         else:
@@ -126,7 +128,7 @@ def editar(id):
         numero = request.form['numero']
         bairro = request.form['bairro']
         complemento = request.form['complemento']
-        tipo = request.form['tipo']
+        tipo = request.form['tipo'].upper()
         telnum = request.form['telnum']
 
 
@@ -142,6 +144,8 @@ def editar(id):
             flash('É necessário inserir o bairro!')
         elif not tipo:
             flash('É necessário selecionar o tipo de telefone!')
+        elif tipo != 'CEL' and tipo != 'RES' and tipo != 'COM':
+            flash('Tipo incorreto! Selecionar entre CEL para celular ou RES para residencial ou COM para Comercial.')
         elif not telnum:
             flash('É necessário inserir o telefone!')
         else:

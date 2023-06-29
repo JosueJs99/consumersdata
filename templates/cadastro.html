@@ -1,64 +1,103 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Cadastro de novos clientes {% endblock%}</h1>
-    <form method="post">
-        <label for="nome">Nome</label>
-        <br>
-        <input type="text" class = "form-control" name="nome"
-               placeholder="Inserir nome"
-               value="{{ request.form['nome'] }}"></input>
-        <br>
+<br>
+    <h1 class="text-center text-light">{% block title %} Cadastro de novos clientes {% endblock%}</h1>
+<br>
+<div class="mx-auto" style="width: 850px;">
+<div class="card" style="width: 56rem;">
+  <div class="card-body">
+    <p class="font-weight-bold">Dados Pessoais</p>
 
-         <label for="sobrenome">Sobrenome</label>
-        <br>
-        <input type="text" class = "form-control" name="sobrenome"
-               placeholder="Inserir sobrenome"
-               value="{{ request.form['sobrenome'] }}"></input>
-        <br>
+        <form method="post">
+            <div class="form-row">
+                <div class="col-5">
+                    <label for="nome">Nome</label>
+                    <br>
+                    <input type="text" class = "form-control" name="nome"
+                           placeholder="Inserir nome"
+                           value="{{ request.form['nome'] }}"></input>
+                    <br>
+                </div>
+                <div class="col-5">
+                    <label for="sobrenome">Sobrenome</label>
+                    <br>
+                    <input type="text" class = "form-control" name="sobrenome"
+                           placeholder="Inserir sobrenome"
+                           value="{{ request.form['sobrenome'] }}"></input>
+                    <br>
+                </div>
+            </div>
 
-         <label for="rua">Rua</label>
-        <br>
-        <input type="text" class = "form-control" name="rua"
-               placeholder="Ex: rua dos bobos"
-               value="{{ request.form['rua'] }}"></input>
-        <br>
+            <p class="font-weight-bold">Endereço</p>
 
-         <label for="numero">Numero</label>
-        <br>
-        <input type="text" class = "form-control" name="numero"
-               placeholder="Ex: 999"
-               value="{{ request.form['numero'] }}"></input>
-        <br>
+            <div class="form-row">
+                <div class="col-5">
+                    <label for="rua">Rua/Avenida/Alameda</label>
+                    <br>
+                    <input type="text" class = "form-control" name="rua"
+                           placeholder="Ex: rua dos bobos"
+                           value="{{ request.form['rua'] }}"></input>
+                    <br>
+                </div>
 
-         <label for="bairro">Bairro</label>
-        <br>
-        <input type="text" class = "form-control" name="bairro"
-               placeholder="Ex: Jardin Europa"
-               value="{{ request.form['bairro'] }}"></input>
-        <br>
+                <div class="col-2">
+                    <label for="numero">Número</label>
+                    <br>
+                    <input type="text" class = "form-control" name="numero"
+                           placeholder="Ex: 999"
+                           value="{{ request.form['numero'] }}"></input>
+                    <br>
+                </div>
 
-         <label for="Complemento">Complemento</label>
-        <br>
-        <input type="text" class = "form-control" name="complemento"
-               placeholder="Ex: próximo a padaria"
-               value="{{ request.form['complemento'] }}"></input>
-        <br>
+                <div class="col-5">
+                    <label for="bairro">Bairro</label>
+                    <br>
+                    <input type="text" class = "form-control" name="bairro"
+                           placeholder="Ex: Jardim Europa"
+                           value="{{ request.form['bairro'] }}"></input>
+                    <br>
+                </div>
+            </div>
 
-        <label for="tipo">Tipo</label>
-        <br>
-        <input type="text" class = "form-control" name="tipo"
-               placeholder="RES, COM ou CEL"
-               value="{{ request.form['tipo'] }}"></input>
-        <br>
+            <div class="form-row">
+            <div class="col-7">
+                <label for="Complemento">Complemento</label>
+                <br>
+                <input type="text" class = "form-control" name="complemento"
+                       placeholder="Ex: próximo a padaria"
+                       value="{{ request.form['complemento'] }}"></input>
+                <br>
+            </div>
+            </div>
 
-        <label for="telnum">N° Telefone</label>
-        <br>
-        <input type="text" class = "form-control" name="telnum"
-               placeholder="xx xxxx-xxxx"
-               value="{{ request.form['telnum'] }}"></input>
-        <br>
 
-        <button type="submit">Cadastrar</button>
-  </form>
+            <p class="font-weight-bold">Telefone</p>
+
+            <div class="form-row">
+				<div class="col-2">
+                    <label for="tipo">Tipo</label>
+                    <br>
+                    <input type="text" class = "form-control  text-uppercase" name="tipo"
+                           placeholder="RES, COM ou CEL"
+                           value="{{ request.form['tipo'] }}"></input>
+                    <br>
+                </div>
+
+                <div class="col-3">
+                    <label for="telnum">Número</label>
+                    <br>
+                    <input type="text" class = "form-control" name="telnum"
+                           placeholder="(xx) xxxx-xxxx"
+                           value="{{ request.form['telnum'] }}"></input>
+                    <br>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success">Cadastrar</button>
+      </form>
+
+    </div>
+    </div>
+</div>
 {% endblock %}
